@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "van-submit-bar": "vant-weapp/submit-bar",
+        "van-card": "vant-weapp/card",
+        "van-stepper": "vant-weapp/stepper"
+    },
+    "navigationBarTitleText": "购物车"
+}

@@ -1,0 +1,28 @@
+<!-- pages/me/me.wxml -->
+<view class="main">
+    <view class="header">
+        <view class="thumb">
+            <open-data type="userAvatarUrl"></open-data>
+        </view>
+        <view class='nickname'>
+            <open-data type="userNickName"></open-data>
+        </view>
+    </view>
+    <van-cell-group>
+        <van-cell use-label-slot title="我的订单" is-link value="查看全部订单" />
+        <view class="">
+            <view>
+                <van-icon name="coupon-o" />
+            </view>
+            <view>
+                <van-icon name="coupon-o" />
+            </view>
+            <view>
+                <van-icon name="coupon-o" />
+            </view>
+            <view>
+                <van-icon name="coupon-o" />
+            </view>
+        </view>
+    </van-cell-group>
+</view>

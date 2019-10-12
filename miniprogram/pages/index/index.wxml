@@ -1,0 +1,57 @@
+<!-- 搜索 -->
+<view class="searchBox">
+    <van-search value="{{ value }}" placeholder="请输入搜索关键词" />
+</view>
+<!-- 可滚动区域 -->
+<scroll-view class='content-scroll' scroll-y='true' enable-flex='true'>
+    <!-- 轮播图 -->
+    <view style="height: 325rpx; width: 100%">
+        <img-swiper></img-swiper>
+    </view>
+    <!-- 商品列表 -->
+    <van-panel title="老板推荐">
+        <view class="goodsList">
+            <van-card centered='true' num='1' price="2.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" data-gId='1' bindtap="toDetail" />
+            <van-card centered='true' price="2.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" data-gId='1' bindtap="toDetail" />
+            <van-card centered='true' price="2.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" data-gId='1' bindtap="toDetail" />
+            <van-card centered='true' price="2.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" data-gId='1' bindtap="toDetail" />
+        </view>
+    </van-panel>
+    <!-- 图标分类 -->
+    <!-- <view class="big-logo">
+        <block wx:for="{{logos}}" wx:key="{{index}}">
+            <view class="logoinfo">
+                <image style="width:100rpx; height: 100rpx;" src="{{item.image}}" mode="aspectFit" />
+                <text class="logotext">{{item.title}}</text>
+            </view>
+        </block>
+    </view> -->
+    <!-- 分隔线 -->
+    <!-- <view class="separate"></view> -->
+    <!-- 掌上秒杀 -->
+    <!-- <view class='page-margin'>
+        <view class="page-row">
+            <image class='theme_img' src="/image/bej.png" mode="aspectFill" />
+            <view class='theme_more'>
+                <text>更多秒杀</text>
+                <image src="/image/arrowright.png" mode="aspectFill" />
+            </view>
+        </view>
+        <scroll-view class='theme_scroll' scroll-x="true">
+            <block wx:for="{{quicks}}" wx:key="{{index}}">
+                <view style="display: inline-block;">
+                    <view class="page-column">
+                        <image src="{{item.image}}" mode="aspectFill" />
+                        <text>{{item.price}}</text>
+                    </view>
+                </view>
+            </block>
+        </scroll-view>
+    </view> -->
+    <!-- 会场分类 -->
+    <!-- <block wx:for='{{pageRow}}' wx:for-item="page" wx:key="{{index}}">
+        <view class='page-row' style="justify-content:center">
+            <image class='page_img' wx:for='{{page}}' src="{{item}}" wx:key="{{index}}" mode="aspectFill"></image>
+        </view>
+    </block> -->
+</scroll-view>

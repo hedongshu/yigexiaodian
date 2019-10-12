@@ -1,0 +1,48 @@
+<!-- 底部 -->
+<view>
+    <view class="top-title">
+        <text>一个小店</text>
+        <text style="float: right">编辑</text>
+    </view>
+    <view class="list">
+        <view class="cart-item">
+            <van-checkbox value="{{ checked }}" bind:change="onChange"></van-checkbox>
+            <image src="{{imageURL}}" />
+            <view class="cart-item-right">
+                <text>商品标题</text>
+                <text>描述信息</text>
+                <view>
+                    <text>$1212</text>
+                    <van-stepper style="float: right;" value="{{ num }}" bind:change="onChange" />
+                </view>
+            </view>
+        </view>
+        <view class="cart-item">
+            <van-checkbox value="{{ checked }}" bind:change="onChange"></van-checkbox>
+            <image src="{{imageURL}}" />
+            <view class="cart-item-right">
+                <text>商品标题</text>
+                <text>描述信息</text>
+                <view>
+                    <text>$1212</text>
+                    <van-stepper style="float: right;" value="{{ num }}" bind:change="onChange" />
+                </view>
+            </view>
+        </view>
+        <view class="cart-item">
+            <van-checkbox value="{{ checked }}" bind:change="onChange"></van-checkbox>
+            <image src="{{imageURL}}" />
+            <view class="cart-item-right">
+                <text>商品标题</text>
+                <text>描述信息</text>
+                <view>
+                    <text>$1212</text>
+                    <van-stepper style="float: right;" value="{{ num }}" bind:change="onChange" />
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<van-submit-bar price="{{ 3050 }}" button-text="提交订单" bind:submit="onClickButton">
+    <van-checkbox value="{{  allChecked }}" bind:change="allClickedOnChange">全选</van-checkbox>
+</van-submit-bar>

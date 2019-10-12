@@ -1,0 +1,22 @@
+/* pages/me/me.wxss */
+
+
+.header{
+    position: relative;
+    height: 220rpx;
+    line-height: 120rpx;
+    padding:30rpx 30rpx 30rpx 180rpx;
+    box-sizing: border-box;
+    background: #66cccc;
+    font-size: 35rpx;
+    color: rgb(51, 51, 51);
+}
+.header .thumb{
+    position: absolute;
+    left: 30rpx;
+    top: 30rpx;
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    overflow: hidden;
+}

@@ -1,0 +1,29 @@
+/* pages/cart/cart.wxss */
+.top-title {
+    height: 50rpx;
+line-height: 50rpx;
+background: #59cecb;
+padding: 20rpx;
+
+}
+.list {
+    display: flex;
+    flex-direction: column;
+}
+.cart-item {
+    display: flex;
+    flex-wrap: wrap;
+align-items: center;
+padding: 10rpx;
+
+}
+.cart-item>image {
+    width: 150rpx;
+    height: 150rpx;
+    margin: 0 40rpx;
+}
+.cart-item-right {
+    flex: 1;
+     display: flex;
+    flex-direction: column;
+}

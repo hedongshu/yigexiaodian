@@ -1,0 +1,13 @@
+/* miniprogram/pages/detail.wxss */
+.popBox {
+    min-height: 500rpx;
+    display: flex;
+    flex-direction: column
+}
+.pop-img {
+    width: 100rpx;
+height: 100rpx;
+border: 1px solid;
+margin: 10rpx;
+
+}

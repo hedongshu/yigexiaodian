@@ -1,0 +1,16 @@
+/* components/imgSwiper.wxss */
+
+.swiperContainer{
+  width: 100%;
+  position: relative;  
+}
+.swiper_box {
+  width: 100%;
+  height:325rpx;
+}
+swiper-item image {
+  width: 100%;
+  display: inline-block;
+  overflow: hidden;
+  height:325rpx;
+}
