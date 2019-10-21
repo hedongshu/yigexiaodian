@@ -1,28 +1,50 @@
 <view>
-    <van-panel>
-        <img-swiper />
-        <view class="titile">{{title}}</view>
-        <view class="price">¥{{price}}</view>
-    </van-panel>
+    <view>
+        <view>
+            <img-swiper height='400rpx' indicatorDots='{{false}}' swipers='{{goodsInfo.des_imgs}}' />
+        </view>
+        <view>
+            <view class="titile">{{goodsInfo.name}}</view>
+            <view class="price">￥{{goodsInfo.price}}</view>
+        </view>
+        <van-collapse value="{{activeNames}}" bind:change='collapseOnChange'>
+            <van-collapse-item title="详细参数" name="1">
+                <text>123</text>
+                >
+            </van-collapse-item>
+            <van-collapse-item title="商品详情" name="2">
+                <view class="imagesList">
+                    <block wx:for="{{goodsInfo.des_imgs}}" wx:key="*this">
+                        <image src="{{item}}" mode="widthFix" />
+                    </block>
+                </view>
+                >
+            </van-collapse-item>
+        </van-collapse>
+    </view>
     <!-- 底部 -->
     <van-goods-action>
-        <van-goods-action-icon icon="chat-o" text="客服" bindtap="onClickIcon" />
-        <van-goods-action-icon info="5" icon="cart-o" text="购物车" bindtap="onClickIcon" />
-        <van-goods-action-button text="加入购物车" bindtap="onClickButton" />
+        <van-goods-action-icon icon="chat-o" open-type='contact' text="客服" />
+        <van-goods-action-icon info="5" icon="cart-o" text="购物车" bindtap="toCart" />
+        <van-goods-action-button text="加入购物车" type="warning" bindtap="onClickButton" />
         <van-goods-action-button text="立即购买" bindtap="onClickButton" />
     </van-goods-action>
     <!-- 弹出层 -->
     <van-popup show="{{ showPopup }}" position="bottom" bind:close="onClose">
         <view class="popBox">
             <view>
-                <image class="pop-img" src="" />
-                <text>¥{{price}}</text>
+                <image class="pop-img" src="{{goodsInfo.img}}" />
+                <view class="pop-info">
+                    <view class="van-ellipsis">{{goodsInfo.name}}</view>
+                    <text class="pop-price">￥{{goodsInfo.price}}</text>
+                </view>
             </view>
             <van-panel title="选择版本">
-                <view style="text-align: center">
-                    <checkbox value="版本1" />
-                    <text>版本1</text>
-                </view>
+                <van-radio-group style="padding-left:30rpx" value="{{ radio }}" bind:change="onRadioChange">
+                    <block wx:for="{{goodsInfo.versions}}">
+                        <van-radio name="{{index}}">{{item}}</van-radio>
+                    </block>
+                </van-radio-group>
             </van-panel>
             <view>
                 <text>购买数量</text>

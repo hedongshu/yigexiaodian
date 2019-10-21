@@ -1,21 +1,49 @@
 // miniprogram/pages/detail.js
+const db = wx.cloud.database()
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        title: '商品标题',
-        price: '100',
-        showPopup: false
+        goodsInfo: {},
+        showPopup: false,
+        activeNames: ['2'],
+        radio: '0'
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log('当前商品id', options.id)
-    },
+        wx.showLoading({
+            title: '加载中...',
+        })
 
+        console.log('当前商品id', options.id)
+        db.collection('goods')
+            .where({
+                _id: options.id
+            })
+            .get().then(res => {
+                console.log(res)
+                this.setData({
+                    goodsInfo: res.data[0]
+                })
+
+                wx.hideLoading()
+            })
+    },
+    onRadioChange(event) {
+        this.setData({
+            radio: event.detail
+        })
+    },
+    toCart() {
+        wx.navigateTo({
+            url: '/pages/cart/cart'
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -39,6 +67,12 @@ Page({
     },
     onChange(event) {
         console.log(event.detail);
+    },
+    // 折叠面板   数据详情
+    collapseOnChange(e) {
+        this.setData({
+            activeNames: e.detail
+        })
     },
     /**
      * 生命周期函数--监听页面显示

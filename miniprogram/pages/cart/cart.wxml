@@ -4,8 +4,12 @@
         <text>一个小店</text>
         <text style="float: right">编辑</text>
     </view>
-    <view class="list">
-        <view class="cart-item">
+    <view wx:if="{{currentList.length==0}}" class="nothing">
+        <text>购物车空空如也哦~</text>
+        <view>快去挑选喜欢的东西吧~</view>
+    </view>
+    <view wx:else class="list">
+        <view class="van-hairline--bottom cart-item">
             <van-checkbox value="{{ checked }}" bind:change="onChange"></van-checkbox>
             <image src="{{imageURL}}" />
             <view class="cart-item-right">
@@ -17,7 +21,7 @@
                 </view>
             </view>
         </view>
-        <view class="cart-item">
+        <view class=" van-hairline--bottom cart-item">
             <van-checkbox value="{{ checked }}" bind:change="onChange"></van-checkbox>
             <image src="{{imageURL}}" />
             <view class="cart-item-right">
@@ -29,7 +33,7 @@
                 </view>
             </view>
         </view>
-        <view class="cart-item">
+        <view class="van-hairline--bottom cart-item">
             <van-checkbox value="{{ checked }}" bind:change="onChange"></van-checkbox>
             <image src="{{imageURL}}" />
             <view class="cart-item-right">

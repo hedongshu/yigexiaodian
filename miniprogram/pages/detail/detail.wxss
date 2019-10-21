@@ -2,12 +2,32 @@
 .popBox {
     min-height: 500rpx;
     display: flex;
-    flex-direction: column
+    flex-direction: column;
+    padding: 10rpx 30rpx;
+}
+.pop-info {
+    float: right;
+    width: 550rpx;
+}
+.pop-price {
+   color: rgb(255, 62, 62);
+    transform: translateY(10rpx)
+}
+.van-popup {
+    overflow: unset !important;
 }
 .pop-img {
-    width: 100rpx;
-height: 100rpx;
-border: 1px solid;
-margin: 10rpx;
-
+    width: 140rpx;
+    height: 140rpx;
+    transform: translateY(-30rpx)
+}
+.titile {
+    margin: 30rpx;
+}
+.price {
+    color: rgb(255, 62, 62);
+    margin: 30rpx;
+}
+.imagesList image{
+    width: 100%
 }

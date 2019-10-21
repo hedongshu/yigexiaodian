@@ -5,16 +5,15 @@
 <!-- 可滚动区域 -->
 <scroll-view class='content-scroll' scroll-y='true' enable-flex='true'>
     <!-- 轮播图 -->
-    <view style="height: 325rpx; width: 100%">
-        <img-swiper></img-swiper>
+    <view>
+        <img-swiper height='300rpx' swipers='{{swipers}}'></img-swiper>
     </view>
     <!-- 商品列表 -->
     <van-panel title="老板推荐">
-        <view class="goodsList">
-            <van-card centered='true' num='1' price="2.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" data-gId='1' bindtap="toDetail" />
-            <van-card centered='true' price="2.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" data-gId='1' bindtap="toDetail" />
-            <van-card centered='true' price="2.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" data-gId='1' bindtap="toDetail" />
-            <van-card centered='true' price="2.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" data-gId='1' bindtap="toDetail" />
+        <view class="goodsList" wx:for="{{goodsList}}" wx:key="_id">
+            <van-card centered='true' price="{{item.price}}" desc="{{item.description}}" thumb="{{ item.img }}" data-gId='{{item._id}}' bindtap="toDetail">
+                <view slot='title' class="van-ellipsis">{{item.name}}</view>
+            </van-card>
         </view>
     </van-panel>
     <!-- 图标分类 -->

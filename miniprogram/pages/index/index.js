@@ -10,14 +10,7 @@ const app = getApp()
 Page({
     data: {
         swipers: [],
-        logos: [],
-        quicks: [],
-        pageRow: [],
-        indicatorDots: true, //轮播图配置
-        autoplay: false,
-        interval: 5000,
-        duration: 1000,
-        imageURL: '/image/quick2.jpg'
+        goodsList: [],
     },
 
     onLoad: function () {
@@ -26,21 +19,29 @@ Page({
         })
 
         this.loadData()
-
     },
     /**加载数据 */
     loadData() {
-        db.collection('profiles-homepage').get().then(res => {
-            console.log('res', res)
-            var data = res.data
+        const self = this
+        db.collection('home_swipers').get().then(res => {
+            console.log('顶栏图片', res)
+            var data = res.data[0]
             this.setData({
-                swipers: data[0].swipers,
-                logos: data[0].logos,
-                quicks: data[0].quicks,
-                pageRow: data[0].pageRow
+                swipers: data.swipers
             })
-            wx.hideLoading()
+            return console.log(this.data)
+        }).then(res => {
+            db.collection('goods').get().then(res => {
+                console.log('商品列表', res)
+                var data = res.data
+                this.setData({
+                    goodsList: data
+                })
+                wx.hideLoading()
+            })
         })
+
+
 
     },
 

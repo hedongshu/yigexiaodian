@@ -1,4 +1,5 @@
 // pages/cart/cart.js
+const db = wx.cloud.database()
 Page({
 
     /**
@@ -7,20 +8,47 @@ Page({
     data: {
         imageURL: '/image/quick2.jpg',
         num: 1,
-        allChecked: false
+        allChecked: false,
+        isNone: true,
+        currentList: []
     },
     allClickedOnChange(e) {
         this.setData({
             allChecked: e.detail
         })
     },
+    updateCarts() {
+
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        this.loadData()
     },
-
+    loadData() {
+        db.collection('carts').get()
+            .then(res => {
+                console.log(res)
+                if (res.data.length == 0) {
+                    db.collection('carts').add({
+                        // data 字段表示需新增的 JSON 数据
+                        data: {
+                            currentList: []
+                        },
+                        success: function (res) {
+                            // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+                            console.log("新用户创建购物车表", res)
+                        }
+                    })
+                } else {
+                    this.setData({
+                        currentList: res.data.currentList
+                    })
+                    console.log('购物车内有', res.data.currentList)
+                }
+            })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
