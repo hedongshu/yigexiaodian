@@ -11,7 +11,7 @@
     <!-- 商品列表 -->
     <van-panel title="老板推荐">
         <view class="goodsList" wx:for="{{goodsList}}" wx:key="_id">
-            <van-card centered='true' price="{{item.price}}" desc="{{item.description}}" thumb="{{ item.img }}" data-gId='{{item._id}}' bindtap="toDetail">
+            <van-card centered='true' price="{{item.price / 100}}" desc="{{item.description}}" thumb="{{ item.img }}" data-gId='{{item._id}}' bindtap="toDetail">
                 <view slot='title' class="van-ellipsis">{{item.name}}</view>
             </van-card>
         </view>

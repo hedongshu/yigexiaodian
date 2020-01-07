@@ -5,7 +5,7 @@
         </view>
         <view>
             <view class="titile">{{goodsInfo.name}}</view>
-            <view class="price">￥{{goodsInfo.price}}</view>
+            <view class="price">￥{{goodsInfo.price / 100}}</view>
         </view>
         <van-collapse value="{{activeNames}}" bind:change='collapseOnChange'>
             <van-collapse-item title="详细参数" name="1">
@@ -25,9 +25,9 @@
     <!-- 底部 -->
     <van-goods-action>
         <van-goods-action-icon icon="chat-o" open-type='contact' text="客服" />
-        <van-goods-action-icon info="5" icon="cart-o" text="购物车" bindtap="toCart" />
-        <van-goods-action-button text="加入购物车" type="warning" bindtap="onClickButton" />
-        <van-goods-action-button text="立即购买" bindtap="onClickButton" />
+        <van-goods-action-icon info="{{cartsNum}}" icon="cart-o" text="购物车" bindtap="toCart" />
+        <van-goods-action-button data-type='addToCart' text="加入购物车" type="warning" bindtap="onClickButton" />
+        <van-goods-action-button data-type='buy' text="立即购买" bindtap="onClickButton" />
     </van-goods-action>
     <!-- 弹出层 -->
     <van-popup show="{{ showPopup }}" position="bottom" bind:close="onClose">
@@ -36,22 +36,22 @@
                 <image class="pop-img" src="{{goodsInfo.img}}" />
                 <view class="pop-info">
                     <view class="van-ellipsis">{{goodsInfo.name}}</view>
-                    <text class="pop-price">￥{{goodsInfo.price}}</text>
+                    <text class="pop-price">￥{{goodsInfo.price / 100}}</text>
                 </view>
             </view>
             <van-panel title="选择版本">
-                <van-radio-group style="padding-left:30rpx" value="{{ radio }}" bind:change="onRadioChange">
-                    <block wx:for="{{goodsInfo.versions}}">
-                        <van-radio name="{{index}}">{{item}}</van-radio>
+                <van-radio-group class="pop-version" value="{{ radio }}" bind:change="onRadioChange">
+                    <block wx:for="{{goodsInfo.versions}}" wx:key="index">
+                        <van-radio style="margin: 6rpx 10rpx" name="{{index}}">{{item}}</van-radio>
                     </block>
                 </van-radio-group>
             </van-panel>
             <view>
                 <text>购买数量</text>
-                <van-stepper style="float: right" value="{{ 1 }}" bind:change="onChange" />
+                <van-stepper style="float: right" value="{{  num }}" bind:change="onChange" />
             </view>
             <view>
-                <van-button size='large' type="primary">确定</van-button>
+                <van-button bind:tap="determine" size='large' type="primary">确定</van-button>
             </view>
         </view>
     </van-popup>

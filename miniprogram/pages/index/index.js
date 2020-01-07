@@ -17,8 +17,20 @@ Page({
         wx.showLoading({
             title: '加载中...',
         })
-
+        this.wxInit()
         this.loadData()
+    },
+    wxInit() {
+        // 获取openid  appid
+        wx.cloud.callFunction({
+            name: 'login',
+            complete: res => {
+                app.globalData.openid = res.result.openid
+                app.globalData.appid = res.result.appid
+            }
+        })
+
+        app.loadCartsData()
     },
     /**加载数据 */
     loadData() {
@@ -31,7 +43,7 @@ Page({
             })
             return console.log(this.data)
         }).then(res => {
-            db.collection('goods').get().then(res => {
+            db.collection('goods').orderBy('createTime', 'desc').get().then(res => {
                 console.log('商品列表', res)
                 var data = res.data
                 this.setData({

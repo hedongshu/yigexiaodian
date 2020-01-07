@@ -21,6 +21,10 @@
     height: 140rpx;
     transform: translateY(-30rpx)
 }
+.pop-version {
+    display: flex;
+    flex-wrap: wrap
+}
 .titile {
     margin: 30rpx;
 }

@@ -9,6 +9,7 @@ padding: 20rpx;
 .list {
     display: flex;
     flex-direction: column;
+    padding: 10rpx 20rpx;
 }
 .cart-item {
     display: flex;

@@ -10,19 +10,19 @@
     </view>
     <van-cell-group>
         <van-cell use-label-slot title="我的订单" is-link value="查看全部订单" />
-        <view class="">
-            <view>
-                <van-icon name="coupon-o" />
-            </view>
-            <view>
-                <van-icon name="coupon-o" />
-            </view>
-            <view>
-                <van-icon name="coupon-o" />
-            </view>
-            <view>
-                <van-icon name="coupon-o" />
-            </view>
-        </view>
     </van-cell-group>
+    <view class="orders">
+        <view hover-class="order-hover">
+            <van-icon name="gold-coin-o" />
+            <text>待付款</text>
+        </view>
+        <view hover-class="order-hover">
+            <van-icon name="todo-list-o" />
+            <text>待收货</text>
+        </view>
+        <view hover-class="order-hover">
+            <van-icon name="passed" />
+            <text>已完成</text>
+        </view>
+    </view>
 </view>

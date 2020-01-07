@@ -1,66 +1,66 @@
 {
-    "pages": [
-        "pages/index/index",
-        "pages/userConsole/userConsole",
-        "pages/storageConsole/storageConsole",
-        "pages/databaseGuide/databaseGuide",
-        "pages/addFunction/addFunction",
-        "pages/deployFunctions/deployFunctions",
-        "pages/chooseLib/chooseLib",
-        "pages/openapi/openapi",
-        "pages/openapi/serverapi/serverapi",
-        "pages/openapi/callback/callback",
-        "pages/openapi/cloudid/cloudid",
-        "pages/im/im",
-        "pages/im/room/room",
-        "pages/classify/classify",
-        "pages/cart/cart",
-        "pages/me/me",
-        "pages/detail/detail"
-    ],
-    "window": {
-        "backgroundColor": "#66CCCC",
-        "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#66CCCC",
-        "navigationBarTitleText": "一个小店",
-        "navigationBarTextStyle": "black"
-    },
-    "sitemapLocation": "sitemap.json",
-    "tabBar": {
-        "color": "#959394",
-        "selectedColor": "#e93b3d",
-        "borderStyle": "black",
-        "backgroundColor": "#ffffff",
-        "list": [
-            {
-                "pagePath": "pages/index/index",
-                "iconPath": "image/home.png",
-                "selectedIconPath": "image/home-hl.png",
-                "text": "首页"
-            },
-            {
-                "pagePath": "pages/cart/cart",
-                "iconPath": "image/cart.png",
-                "selectedIconPath": "image/cart-hl.png",
-                "text": "购物车"
-            },
-            {
-                "pagePath": "pages/me/me",
-                "iconPath": "image/me.png",
-                "selectedIconPath": "image/me-hl.png",
-                "text": "我的"
-            }
-        ]
-    },
-    "usingComponents": {
-        "van-panel": "vant-weapp/panel",
-        "van-popup": "vant-weapp/popup",
-        "van-button": "vant-weapp/button",
-        "van-tag": "vant-weapp/tag",
-        "van-cell": "vant-weapp/cell",
-        "van-cell-group": "vant-weapp/cell-group",
-        "van-checkbox": "vant-weapp/checkbox",
-        "van-checkbox-grop": "vant-weapp/checkbox-group",
-        "van-icon": "vant-weapp/icon"
-    }
+  "pages": [
+    "pages/me/me",
+    "pages/index/index",
+    "pages/cart/cart",
+    "pages/classify/classify",
+    "pages/detail/detail",
+    "pages/order/order",
+    "pages/allOrder/allOrder"
+  ],
+  "window": {
+    "backgroundColor": "#66CCCC",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#66CCCC",
+    "navigationBarTitleText": "一个小店",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#959394",
+    "selectedColor": "#e93b3d",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/home.png",
+        "selectedIconPath": "image/home-hl.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "iconPath": "image/cart.png",
+        "selectedIconPath": "image/cart-hl.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "iconPath": "image/me.png",
+        "selectedIconPath": "image/me-hl.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-panel": "vant-weapp/panel",
+    "van-popup": "vant-weapp/popup",
+    "van-button": "vant-weapp/button",
+    "van-tag": "vant-weapp/tag",
+    "van-cell": "vant-weapp/cell",
+    "van-cell-group": "vant-weapp/cell-group",
+    "van-checkbox": "vant-weapp/checkbox",
+    "van-checkbox-grop": "vant-weapp/checkbox-group",
+    "van-icon": "vant-weapp/icon",
+    "van-submit-bar": "vant-weapp/submit-bar",
+    "van-card": "vant-weapp/card",
+    "van-stepper": "vant-weapp/stepper",
+    "van-collapse": "vant-weapp/collapse",
+    "van-collapse-item": "vant-weapp/collapse-item",
+    "van-radio": "vant-weapp/radio",
+    "van-radio-group": "vant-weapp/radio-group",
+    "van-goods-action": "vant-weapp/goods-action",
+    "van-goods-action-icon": "vant-weapp/goods-action-icon",
+    "van-goods-action-button": "vant-weapp/goods-action-button"
+  }
 }

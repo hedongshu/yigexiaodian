@@ -1,4 +1,4 @@
-// pages/deployFunctions/deployFunctions.js
+// pages/allOrder/allOrder.js
 Page({
 
   /**

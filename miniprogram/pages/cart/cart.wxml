@@ -2,51 +2,35 @@
 <view>
     <view class="top-title">
         <text>一个小店</text>
-        <text style="float: right">编辑</text>
+        <text wx:if="{{!isEditor}}" style="float: right" bind:tap="editor">编辑</text>
+        <text wx:else style="float: right" bind:tap="editor">完成</text>
     </view>
-    <view wx:if="{{currentList.length==0}}" class="nothing">
+    <view wx:if="{{carts.length==0}}" class="nothing">
         <text>购物车空空如也哦~</text>
         <view>快去挑选喜欢的东西吧~</view>
     </view>
     <view wx:else class="list">
-        <view class="van-hairline--bottom cart-item">
-            <van-checkbox value="{{ checked }}" bind:change="onChange"></van-checkbox>
-            <image src="{{imageURL}}" />
-            <view class="cart-item-right">
-                <text>商品标题</text>
-                <text>描述信息</text>
-                <view>
-                    <text>$1212</text>
-                    <van-stepper style="float: right;" value="{{ num }}" bind:change="onChange" />
+        <block wx:for="{{carts}}" wx:key="_id">
+            <view class="van-hairline--bottom cart-item">
+                <van-checkbox data-index='{{index}}' value="{{ item.selected }}" bind:change="selectItem"></van-checkbox>
+                <image src="{{item.img}}" />
+                <view class="cart-item-right  van-ellipsis">
+                    <text>{{item.name}}</text>
+                    <text>{{item.version}}</text>
+                    <view>
+                        <text style="color: #f44;">￥{{item.price / 100}}</text>
+                        <van-stepper data-index='{{index}}' style="float: right;" value="{{ item.num }}" bind:change="stepperChange" />
+                    </view>
                 </view>
             </view>
-        </view>
-        <view class=" van-hairline--bottom cart-item">
-            <van-checkbox value="{{ checked }}" bind:change="onChange"></van-checkbox>
-            <image src="{{imageURL}}" />
-            <view class="cart-item-right">
-                <text>商品标题</text>
-                <text>描述信息</text>
-                <view>
-                    <text>$1212</text>
-                    <van-stepper style="float: right;" value="{{ num }}" bind:change="onChange" />
-                </view>
-            </view>
-        </view>
-        <view class="van-hairline--bottom cart-item">
-            <van-checkbox value="{{ checked }}" bind:change="onChange"></van-checkbox>
-            <image src="{{imageURL}}" />
-            <view class="cart-item-right">
-                <text>商品标题</text>
-                <text>描述信息</text>
-                <view>
-                    <text>$1212</text>
-                    <van-stepper style="float: right;" value="{{ num }}" bind:change="onChange" />
-                </view>
-            </view>
-        </view>
+        </block>
     </view>
 </view>
-<van-submit-bar price="{{ 3050 }}" button-text="提交订单" bind:submit="onClickButton">
-    <van-checkbox value="{{  allChecked }}" bind:change="allClickedOnChange">全选</van-checkbox>
+<!-- 提交结算 -->
+<van-submit-bar wx:if="{{!isEditor}}" disabled='{{subdisabled}}' safe-area-inset-bottom='{{false}}' price="{{ totalPrice }}" button-text="结算" bind:submit="settlement">
+    <van-checkbox style="margin-left: 20rpx" value="{{ allChecked }}" bind:change="selectAll">
+        全选
+    </van-checkbox>
 </van-submit-bar>
+<!-- 删除购物车物品 -->
+<van-submit-bar wx:else disabled='{{deleteAbled}}' safe-area-inset-bottom='{{false}}' button-text="删除" bind:submit="deleteCart"></van-submit-bar>

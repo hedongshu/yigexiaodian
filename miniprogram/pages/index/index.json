@@ -1,8 +1,7 @@
 {
     "usingComponents": {
         "van-search": "vant-weapp/search",
-        "img-swiper": "/components/imgSwiper/imgSwiper",
-        "van-card": "vant-weapp/card"
+        "img-swiper": "/components/imgSwiper/imgSwiper"
     },
     "navigationBarTitleText": "首页"
 }

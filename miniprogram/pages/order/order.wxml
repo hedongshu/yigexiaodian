@@ -1,0 +1,16 @@
+<!-- miniprogram/pages/order/order.wxml -->
+<view>
+    <!-- 地址 -->
+    <van-cell wx:if="{{!hasAddress}}" title="选择地址" is-link bind:tap="chooseAddress" />
+    <block wx:else>
+        <van-cell title='收货人: {{userInfo.name}}' value='{{userInfo.telNumber}}' is-link bind:tap="chooseAddress"></van-cell>
+        <view class="address">{{userInfo.address}}</view>
+    </block>
+    <!-- 列表 -->
+    <view class="list">
+        <block wx:for="{{goodsList}}">
+            <van-card num="{{item.num}}" price="{{item.price / 100}}" desc="{{item.version}}" title="{{item.name}}" thumb="{{ item.img }}" />
+        </block>
+    </view>
+    <van-submit-bar disabled='{{!hasAddress}}' price="{{ totalPrice }}" button-text="提交订单" bind:submit="onSubmit" />
+</view>

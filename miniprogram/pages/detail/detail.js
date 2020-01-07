@@ -1,5 +1,6 @@
 // miniprogram/pages/detail.js
 const db = wx.cloud.database()
+const app = getApp()
 
 Page({
 
@@ -8,9 +9,13 @@ Page({
      */
     data: {
         goodsInfo: {},
+        _id: '',
         showPopup: false,
         activeNames: ['2'],
-        radio: '0'
+        radio: '0',  //商品的版本
+        buyType: '',
+        num: 1, //商品数量
+        cartsNum: undefined  //购物车数量
     },
     /**
      * 生命周期函数--监听页面加载
@@ -19,8 +24,14 @@ Page({
         wx.showLoading({
             title: '加载中...',
         })
+        if (app.globalData.carts.length > 0) {
+            this.setData({
+                cartsNum: app.globalData.carts.length
+            })
+        }
 
         console.log('当前商品id', options.id)
+        this.data._id = options.id
         db.collection('goods')
             .where({
                 _id: options.id
@@ -34,16 +45,40 @@ Page({
                 wx.hideLoading()
             })
     },
+    determine() {
+        if (this.data.buyType === 'buy') {
+            console.log('立即购买')
+        } else {
+            console.log('加入购物车')
+            let newItem = {
+                _id: this.data._id,
+                img: this.data.goodsInfo.img,
+                name: this.data.goodsInfo.name,
+                price: this.data.goodsInfo.price,
+                version: this.data.goodsInfo.versions[this.data.radio],
+                num: this.data.num,
+                createId: new Date()
+            }
+            app.isNotRepeteToCart(newItem).then(res => {
+                console.log(res)
+                this.setData({
+                    cartsNum: app.globalData.carts.length,
+                    showPopup: false,
+                })
+            })
+        }
+    },
     onRadioChange(event) {
         this.setData({
             radio: event.detail
         })
     },
     toCart() {
-        wx.navigateTo({
+        wx.switchTab({
             url: '/pages/cart/cart'
         })
     },
+
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -54,10 +89,11 @@ Page({
         console.log('点击图标');
     },
 
-    onClickButton() {
-        console.log('点击按钮');
+    onClickButton(e) {
+        console.log('点击按钮', e);
         this.setData({
-            showPopup: true
+            showPopup: true,
+            buyType: e.target.dataset.type
         })
     },
     onClose() {
@@ -66,7 +102,9 @@ Page({
         })
     },
     onChange(event) {
-        console.log(event.detail);
+        this.setData({
+            num: event.detail
+        })
     },
     // 折叠面板   数据详情
     collapseOnChange(e) {
@@ -78,7 +116,11 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        if (app.globalData.carts.length > 0) {
+            this.setData({
+                cartsNum: app.globalData.carts.length
+            })
+        }
     },
 
     /**

@@ -1,22 +1,46 @@
 /* pages/me/me.wxss */
 
-
-.header{
-    position: relative;
-    height: 220rpx;
-    line-height: 120rpx;
-    padding:30rpx 30rpx 30rpx 180rpx;
-    box-sizing: border-box;
-    background: #66cccc;
-    font-size: 35rpx;
-    color: rgb(51, 51, 51);
+.header {
+  position: relative;
+  height: 220rpx;
+  line-height: 120rpx;
+  padding: 30rpx 30rpx 30rpx 180rpx;
+  box-sizing: border-box;
+  background: #66cccc;
+  font-size: 35rpx;
+  color: rgb(51, 51, 51);
 }
-.header .thumb{
-    position: absolute;
-    left: 30rpx;
-    top: 30rpx;
-    width: 120rpx;
-    height: 120rpx;
-    border-radius: 50%;
-    overflow: hidden;
+.header .thumb {
+  position: absolute;
+  left: 30rpx;
+  top: 30rpx;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.orders {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 130rpx;
+  background-color: #fff;
+}
+.orders > view {
+  text-align: center;
+  width: 120rpx;
+  padding: 20rpx;
+}
+.order-hover {
+  background-color: #66cccc34;
+}
+
+.orders > view > van-icon {
+  display: block;
+  font-size: 45rpx;
+}
+.orders > view > text {
+  display: block;
+  font-size: 23rpx;
 }
