@@ -47,6 +47,8 @@
     "van-popup": "vant-weapp/popup",
     "van-button": "vant-weapp/button",
     "van-tag": "vant-weapp/tag",
+    "van-tab": "vant-weapp/tab",
+    "van-tabs": "vant-weapp/tabs",
     "van-cell": "vant-weapp/cell",
     "van-cell-group": "vant-weapp/cell-group",
     "van-checkbox": "vant-weapp/checkbox",

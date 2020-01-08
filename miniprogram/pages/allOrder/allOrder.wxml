@@ -1,2 +1,34 @@
-<!--pages/allOrder/allOrder.wxml-->
-<text>pages/allOrder/allOrder.wxml</text>
+<!-- pages/allOrder/allOrder.wxml -->
+<van-tabs active="{{tabIndex}}" bind:change="onTabChange" animated='true'>
+    <van-tab title="全部"></van-tab>
+    <van-tab title="待支付"></van-tab>
+    <van-tab title="待收货"></van-tab>
+    <van-tab title="已完成"></van-tab>
+</van-tabs>
+<view wx:if="{{ordersList.length==0}}" class="nothing">
+    <text>订单空空如也哦~</text>
+    <view>快去挑选喜欢的东西吧~</view>
+</view>
+<view wx:else class="ordersList">
+    <block wx:for="{{ordersList}}" wx:key="_id">
+        <view class="van-hairline--bottom cart-item">
+            <!-- 订单信息头部 -->
+            <!-- 订单的商品 -->
+            <view class="list">
+                <block wx:for="{{item.goods}}" wx:for-item="good">
+                    <van-card num="{{good.num}}" price="{{good.price / 100}}" desc="{{good.version}}" title="{{good.name}}" thumb="{{  good.img }}" />
+                </block>
+            </view>
+            <!-- 底部操作按钮 -->
+            <view class="butView">
+                <view>
+                    <text>共{{item.totalNum}}件商品, 合计￥ {{item.totalPrice}}</text>
+                </view>
+                <view class="">
+                    <van-button size='small' round type="default">查看物流</van-button>
+                    <van-button size='small' round type="warning">确定收货</van-button>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>

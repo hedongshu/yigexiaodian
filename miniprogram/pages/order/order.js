@@ -10,6 +10,7 @@ Page({
     hasAddress: false,
     totalPrice: 0,
     goodsList: [],
+    totalNum: 0,
     userInfo: {}
   },
 
@@ -17,15 +18,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(app.globalData.selectedGoods);
     let data = app.globalData.selectedGoods;
     let price = 0;
+    let num = 0;
     data.forEach(element => {
       price += element.price * element.num;
+      num += element.num;
     });
     this.setData({
       goodsList: data,
-      totalPrice: price
+      totalPrice: price,
+      totalNum: num
     });
   },
   /**选择地址 */
@@ -56,11 +59,15 @@ Page({
           createTime: new Date(),
           paid: false, //默认未支付,
           userInfo: this.data.userInfo,
-          addressObj: this.data.address
+          addressObj: this.data.address,
+          totalPrice: this.data.totalPrice,
+          totalNum: this.data.totalNum
         }
       })
       .then(res => {
         console.log("提交订单成功", res);
+        app.resetSelectedGoods();
+        wx.navigateBack();
       });
   },
   /**

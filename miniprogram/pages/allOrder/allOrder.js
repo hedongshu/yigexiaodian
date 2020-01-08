@@ -1,66 +1,74 @@
 // pages/allOrder/allOrder.js
-Page({
+const app = getApp();
 
+Page({
   /**
    * 页面的初始数据
    */
   data: {
-
+    types: ["all", "pay", "goods", "finished"],
+    tabIndex: 0,
+    ordersList: []
   },
 
+  onTabChange(e) {
+    let type = this.data.types[e.detail.index];
+    this.updateOrdersList(type);
+  },
+
+  updateOrdersList(type) {
+    app.loadOrdersData(type).then(res => {
+      this.setData({
+        ordersList: res.data
+      });
+      console.log(this.data.ordersList);
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function(options) {
+    let index = this.data.types.indexOf(options.type);
+    if (index) {
+      this.setData({
+        tabIndex: index
+      });
+      console.log(this.data.tabIndex);
+    }
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
-  },
+  onReady: function() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
-  },
+  onShow: function() {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-
-  },
+  onHide: function() {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-
-  },
+  onUnload: function() {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
-  },
+  onPullDownRefresh: function() {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
-  },
+  onReachBottom: function() {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  }
-})
+  onShareAppMessage: function() {}
+});

@@ -186,7 +186,7 @@ Page({
     });
     app.globalData.selectedGoods = selectedGoods;
     wx.navigateTo({
-      url: "/pages/order/order?id="
+      url: "/pages/order/order"
     });
   },
   /**

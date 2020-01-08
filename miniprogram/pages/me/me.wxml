@@ -9,18 +9,18 @@
         </view>
     </view>
     <van-cell-group>
-        <van-cell use-label-slot title="我的订单" is-link value="查看全部订单" />
+        <van-cell data-type='all' bind:tap="toOrders" use-label-slot title="我的订单" is-link value="查看全部订单" />
     </van-cell-group>
     <view class="orders">
-        <view hover-class="order-hover">
+        <view hover-class="order-hover" data-type='pay' bind:tap="toOrders">
             <van-icon name="gold-coin-o" />
             <text>待付款</text>
         </view>
-        <view hover-class="order-hover">
+        <view hover-class="order-hover" data-type='goods' bind:tap="toOrders">
             <van-icon name="todo-list-o" />
             <text>待收货</text>
         </view>
-        <view hover-class="order-hover">
+        <view hover-class="order-hover" data-type='finished' bind:tap="toOrders">
             <van-icon name="passed" />
             <text>已完成</text>
         </view>

@@ -106,6 +106,66 @@ App({
         }
       });
   },
+  /**把提交订单之后的商品从购物车中删除 */
+    resetSelectedGoods() {
+        for (let i = 0; i < this.globalData.carts.length; i++) {
+            let carItem = this.globalData.carts[i]
+            for (let j = 0; j < this.globalData.selectedGoods.length; j++) {
+                let selectedItem = this.globalData.selectedGoods[j];
+
+                if()
+            }
+        }
+    let newData = this.globalData.carts.filter(item => {
+      return !this.globalData.selectedGoods.includes(item);
+    });
+    this.updateCartsFromNewData(newData, () => {
+      this.globalData.selectedGoods = [];
+    });
+  },
+  /**
+   * 获取订单
+   * @param {string} type all/pay/goods/finished
+   */
+  loadOrdersData(type) {
+    const db = wx.cloud.database();
+
+    switch (type) {
+      case "all":
+        return db
+          .collection("orders")
+          .orderBy("createTime", "desc")
+          .get();
+      case "pay":
+        return db
+          .collection("orders")
+          .where({
+            paid: false
+          })
+          .orderBy("createTime", "desc")
+          .get();
+      case "goods":
+        return db
+          .collection("orders")
+          .where({
+            paid: true,
+            finished: false
+          })
+          .orderBy("createTime", "desc")
+          .get();
+      case "finished":
+        return db
+          .collection("orders")
+          .where({
+            paid: true,
+            finished: true
+          })
+          .orderBy("createTime", "desc")
+          .get();
+      default:
+        break;
+    }
+  },
   // 上传图片
   doUpload: function() {
     // 选择图片

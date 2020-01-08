@@ -1,1 +1,33 @@
 /* pages/allOrder/allOrder.wxss */
+.butView {
+  width: 100%;
+  text-align: right;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  padding: 10rpx 20rpx;
+}
+.cart-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background: #fff;
+  margin: 15rpx;
+  border-radius: 10rpx;
+}
+.cart-item > image {
+  width: 150rpx;
+  height: 150rpx;
+  margin: 0 40rpx;
+}
+.cart-item-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.nothing {
+  text-align: center;
+  margin-top: 100rpx;
+}
