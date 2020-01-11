@@ -107,18 +107,29 @@ App({
       });
   },
   /**把提交订单之后的商品从购物车中删除 */
-    resetSelectedGoods() {
-        for (let i = 0; i < this.globalData.carts.length; i++) {
-            let carItem = this.globalData.carts[i]
-            for (let j = 0; j < this.globalData.selectedGoods.length; j++) {
-                let selectedItem = this.globalData.selectedGoods[j];
+  resetSelectedGoods() {
+    //   let newData = []
+    // for (let i = 0; i < this.globalData.carts.length; i++) {
+    //   let carItem = this.globalData.carts[i];
+    //   for (let j = 0; j < this.globalData.selectedGoods.length; j++) {
+    //       let selectedItem = this.globalData.selectedGoods[j];
 
-                if()
-            }
-        }
+    //   }
+    // }
+    console.log("删除前", this.globalData.carts);
     let newData = this.globalData.carts.filter(item => {
-      return !this.globalData.selectedGoods.includes(item);
+      let isSelected = true;
+      for (let j = 0; j < this.globalData.selectedGoods.length; j++) {
+        let selectedItem = this.globalData.selectedGoods[j];
+        if (selectedItem._id == item._id) {
+          isSelected = false;
+          break;
+        }
+      }
+      return isSelected;
     });
+    console.log("删除后", newData);
+
     this.updateCartsFromNewData(newData, () => {
       this.globalData.selectedGoods = [];
     });
