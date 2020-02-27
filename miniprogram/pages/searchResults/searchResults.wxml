@@ -1,0 +1,2 @@
+<!-- pages/searchResults/searchResults.wxml -->
+<text>{{searchText}}</text>

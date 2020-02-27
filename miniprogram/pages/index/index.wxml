@@ -1,6 +1,6 @@
 <!-- 搜索 -->
 <view class="searchBox">
-    <van-search value="{{ value }}" placeholder="请输入搜索关键词" />
+    <van-search value="{{ value }}" placeholder="请输入搜索关键词" bind:search="onSearch" />
 </view>
 <!-- 可滚动区域 -->
 <scroll-view class='content-scroll' scroll-y='true' enable-flex='true'>

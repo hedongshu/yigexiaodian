@@ -1,12 +1,13 @@
 {
   "pages": [
-    "pages/me/me",
     "pages/index/index",
+    "pages/me/me",
     "pages/cart/cart",
     "pages/classify/classify",
     "pages/detail/detail",
     "pages/order/order",
-    "pages/allOrder/allOrder"
+    "pages/allOrder/allOrder",
+    "pages/searchResults/searchResults"
   ],
   "window": {
     "backgroundColor": "#66CCCC",
